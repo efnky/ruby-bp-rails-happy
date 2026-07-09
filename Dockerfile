@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     mkdir -p tmp log storage && \
     chown -R rails:rails tmp log storage
 COPY --from=builder /usr/local/bundle /usr/local/bundle
+COPY --from=builder /app/vendor/bundle /app/vendor/bundle
 COPY --chown=rails:rails . .
 EXPOSE 3000
 USER 1001
